@@ -1,5 +1,5 @@
 const { assert } = require('chai')
-const allSettled = require('../src/all-settled')
+const allSettled = require('../all-settled')
 
 describe('allSettled', () => {
   it('should return an array of fulfilled/rejected objects as expected', (done) => {
