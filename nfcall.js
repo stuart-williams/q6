@@ -1,9 +1,7 @@
 function nfcall (fn, ...args) {
   return new Promise((resolve, reject) => {
-    fn(...[ ...args, (error, response) => {
-      if (error) return reject(error)
-      resolve(response)
-    } ])
+    const callback = (error, response) => fn(...[ ...args, (error, response) => error ? reject(error) : resolve(response) ])
+    fn(...[ ...args, callback ])
   })
 }
 
