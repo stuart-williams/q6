@@ -1,13 +1,5 @@
-const wrap = (promise) => new Promise((resolve) => {
-  Promise.resolve(promise)
-    .then((value) => resolve({
-      state: 'fulfilled',
-      value
-    }))
-    .catch((reason) => resolve({
-      state: 'rejected',
-      reason
-    }))
-})
+const wrap = (promise) => Promise.resolve(promise)
+  .then((value) => ({ state: 'fulfilled', value }))
+  .catch((reason) => ({ state: 'rejected', reason }))
 
 module.exports = (promises) => Promise.all(promises.map(wrap))
