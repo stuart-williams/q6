@@ -12,7 +12,7 @@ describe('nfcall', () => {
   })
 
   it('should reject as expected when params are invalid', (done) => {
-    nfcall(readFile, resolve(__dirname, 'nope.txt'), 'utf8').catch((error) => {
+    nfcall(readFile, resolve(__dirname, 'nope.txt'), 'utf8').catch(() => {
       assert.equal(true, true)
       done()
     })
