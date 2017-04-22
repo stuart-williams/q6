@@ -6,8 +6,10 @@ describe('allSettled', () => {
     const promises = [ Promise.resolve('Nice one!'), Promise.reject(new Error('Nope...')) ]
 
     allSettled(promises).then(([ fulfilled, rejected ]) => {
-      assert.deepEqual(fulfilled, { state: 'fulfilled', value: 'Nice one!' })
-      assert.deepEqual(rejected, { state: 'rejected', reason: 'Nope...' })
+      assert.equal(fulfilled.state, 'fulfilled')
+      assert.equal(fulfilled.value, 'Nice one!')
+      assert.equal(rejected.state, 'rejected')
+      assert.equal(rejected.reason.message, 'Nope...')
       done()
     })
   })
