@@ -1,5 +1,5 @@
 {
-  "name": "p",
+  "name": "cue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stuart-williams/p.git"
+    "url": "git+https://github.com/stuart-williams/cue.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stuart-williams/p/issues"
+    "url": "https://github.com/stuart-williams/cue/issues"
   },
-  "homepage": "https://github.com/stuart-williams/p#readme",
+  "homepage": "https://github.com/stuart-williams/cue#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
