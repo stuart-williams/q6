@@ -1,4 +1,4 @@
-const allSettled = require('./all-settiled')
+const allSettled = require('./all-settled')
 const nfcall = require('./nfcall')
 const nfapply = require('./nfapply')
 const fcall = require('./fcall')
