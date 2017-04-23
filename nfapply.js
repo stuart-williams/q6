@@ -1,8 +1,7 @@
+const nfcall = require('./nfcall')
+
 function nfapply (fn, args) {
-  return new Promise((resolve, reject) => {
-    const callback = (error, response) => error ? reject(error) : resolve(response)
-    fn(...args, callback)
-  })
+  return nfcall(fn, ...args)
 }
 
 module.exports = nfapply

@@ -4,6 +4,7 @@ const nfapply = require('./nfapply')
 const fcall = require('./fcall')
 const fapply = require('./fapply')
 const any = require('./any')
+const denodeify = require('./denodeify')
 
 module.exports = {
   allSettled,
@@ -11,5 +12,6 @@ module.exports = {
   nfapply,
   fcall,
   fapply,
-  any
+  any,
+  denodeify
 }
