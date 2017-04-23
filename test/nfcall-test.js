@@ -1,11 +1,11 @@
 const { assert } = require('chai')
-const { readFile } = require('fs')
-const { resolve } = require('path')
 const nfcall = require('../nfcall')
 
 describe('nfcall', () => {
   it('should resolve as expected when params are valid', (done) => {
-    nfcall(readFile, resolve(__dirname, './data/hello.txt'), 'utf8')
+    const readFile = (path, encoding, callback) => callback(null, 'This is my contents!')
+
+    nfcall(readFile, 'good.txt', 'utf8')
       .then((contents) => {
         assert.isString(contents)
         done()
@@ -14,9 +14,11 @@ describe('nfcall', () => {
   })
 
   it('should reject as expected when params are invalid', (done) => {
-    nfcall(readFile, resolve(__dirname, 'nope.txt'), 'utf8')
-      .catch(() => {
-        assert.equal(true, true)
+    const readFile = (path, encoding, callback) => callback(new Error('Nope...'))
+
+    nfcall(readFile, 'bad.txt', 'utf8')
+      .catch((e) => {
+        assert.equal(e.message, 'Nope...')
         done()
       })
   })
