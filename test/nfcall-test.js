@@ -7,7 +7,7 @@ describe('nfcall', () => {
 
     nfcall(readFile, 'good.txt', 'utf8')
       .then((contents) => {
-        assert.isString(contents)
+        assert.equal(contents, 'This is my contents!')
         done()
       })
       .catch(done)
