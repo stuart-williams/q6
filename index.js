@@ -5,6 +5,7 @@ const fcall = require('./fcall')
 const fapply = require('./fapply')
 const any = require('./any')
 const denodeify = require('./denodeify')
+const ninvoke = require('./ninvoke')
 
 module.exports = {
   allSettled,
@@ -13,5 +14,6 @@ module.exports = {
   fcall,
   fapply,
   any,
-  denodeify
+  denodeify,
+  ninvoke
 }
