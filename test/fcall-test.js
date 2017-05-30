@@ -2,24 +2,22 @@ const { assert } = require('chai')
 const fcall = require('../fcall')
 
 describe('fcall', () => {
-  it('should resolve as expected when the function call is successful', (done) => {
-    const add = (a, b) => a + b
+  it('should fulfill with callback result', () => {
+    const func = (a, b, c) => a + b + c
 
-    fcall(add, 1, 2)
-      .then((result) => {
-        assert.equal(result, 3)
-        done()
+    return fcall(func, 1, 2, 3)
+      .then((sum) => {
+        assert.equal(sum, 6)
       })
-      .catch(done)
   })
 
-  it('should reject as expected when the function call is unsuccessful', (done) => {
-    const bad = () => { throw new Error('Bad!') }
+  it('should reject with callback error', () => {
+    const nope = new Error('Nope...')
+    const func = () => { throw nope }
 
-    fcall(bad)
+    return fcall(func)
       .catch((error) => {
-        assert.equal(error.message, 'Bad!')
-        done()
+        assert.equal(error, nope)
       })
   })
 })

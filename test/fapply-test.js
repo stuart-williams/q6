@@ -2,24 +2,22 @@ const { assert } = require('chai')
 const fapply = require('../fapply')
 
 describe('fapply', () => {
-  it('should resolve as expected when the function call is successful', (done) => {
-    const add = (a, b) => a + b
+  it('should fulfill with callback result', () => {
+    const func = (a, b, c) => a + b + c
 
-    fapply(add, [ 1, 2 ])
-      .then((result) => {
-        assert.equal(result, 3)
-        done()
+    return fapply(func, [ 1, 2, 3 ])
+      .then((sum) => {
+        assert.equal(sum, 6)
       })
-      .catch(done)
   })
 
-  it('should reject as expected when the function call is unsuccessful', (done) => {
-    const bad = () => { throw new Error('Bad!') }
+  it('should reject with callback error', () => {
+    const nope = new Error('Nope...')
+    const func = () => { throw nope }
 
-    fapply(bad)
+    return fapply(func)
       .catch((error) => {
-        assert.equal(error.message, 'Bad!')
-        done()
+        assert.equal(error, nope)
       })
   })
 })

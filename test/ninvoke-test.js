@@ -2,29 +2,40 @@ const { assert } = require('chai')
 const ninvoke = require('../ninvoke')
 
 describe('ninvoke', () => {
+  afterEach(() => {
+    Test.sum = null
+  })
+
+  const nope = new Error('Nope...')
+
   const Test = {
-    good (callback) {
-      return callback(null, this)
+    good (a, b, c, callback) {
+      this.sum = a + b + c
+      return callback(null, this.sum)
     },
     bad (callback) {
-      return callback(new Error('Nope...'))
+      return callback(nope)
     }
   }
 
-  it('should resolve as expected (with the correct `this` binding) when params are valid', (done) => {
-    ninvoke(Test, 'good')
-      .then((self) => {
-        assert.equal(self, Test)
-        done()
+  it('should fulfill with callback result', () => {
+    return ninvoke(Test, 'good', 1, 2, 3)
+      .then((sum) => {
+        assert.equal(sum, 6)
       })
-      .catch(done)
   })
 
-  it('should reject as expected when params are invalid', (done) => {
-    ninvoke(Test, 'bad')
-      .catch((e) => {
-        assert.equal(e.message, 'Nope...')
-        done()
+  it('should reject with callback error', () => {
+    return ninvoke(Test, 'bad')
+      .catch((error) => {
+        assert.equal(error, nope)
+      })
+  })
+
+  it('should bind the function', () => {
+    return ninvoke(Test, 'good', 1, 2, 3)
+      .then(() => {
+        assert.equal(Test.sum, 6)
       })
   })
 })

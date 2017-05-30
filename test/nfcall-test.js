@@ -2,24 +2,22 @@ const { assert } = require('chai')
 const nfcall = require('../nfcall')
 
 describe('nfcall', () => {
-  it('should resolve as expected when params are valid', (done) => {
-    const readFile = (path, encoding, callback) => callback(null, 'This is my contents!')
+  it('should fulfill with callback result', () => {
+    const func = (a, b, c, callback) => callback(null, a + b + c)
 
-    nfcall(readFile, 'good.txt', 'utf8')
-      .then((contents) => {
-        assert.equal(contents, 'This is my contents!')
-        done()
+    return nfcall(func, 1, 2, 3)
+      .then((sum) => {
+        assert.equal(sum, 6)
       })
-      .catch(done)
   })
 
-  it('should reject as expected when params are invalid', (done) => {
-    const readFile = (path, encoding, callback) => callback(new Error('Nope...'))
+  it('should reject with callback error', () => {
+    const nope = new Error('Nope...')
+    const func = (a, b, c, callback) => callback(nope)
 
-    nfcall(readFile, 'bad.txt', 'utf8')
-      .catch((e) => {
-        assert.equal(e.message, 'Nope...')
-        done()
+    return nfcall(func, 1, 2, 3)
+      .catch((error) => {
+        assert.equal(error, nope)
       })
   })
 })

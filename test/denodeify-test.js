@@ -2,15 +2,13 @@ const { assert } = require('chai')
 const denodeify = require('../denodeify')
 
 describe('denodeify', () => {
-  it('should return a function that can be called to return a promise', (done) => {
-    const readFile = (path, encoding, callback) => callback(null, 'This is my contents!')
-    const asyncReadFile = denodeify(readFile)
+  it('should return a function that fulfills with callback result', () => {
+    const func = (a, b, c, callback) => callback(null, a + b + c)
+    const asyncFunc = denodeify(func)
 
-    asyncReadFile('good.txt', 'utf8')
-      .then((contents) => {
-        assert.equal(contents, 'This is my contents!')
-        done()
+    return asyncFunc(1, 2, 3)
+      .then((sum) => {
+        assert.equal(sum, 6)
       })
-      .catch(done)
   })
 })
