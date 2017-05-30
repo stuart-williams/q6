@@ -1,7 +1,7 @@
 const fcall = require('./fcall')
 
-function fapply (fn, args = []) {
-  return fcall(fn, ...args)
+function fapply (func, args = []) {
+  return fcall(func, ...args)
 }
 
 module.exports = fapply

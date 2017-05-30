@@ -1,9 +1,9 @@
-function fcall (fn, ...args) {
+function fcall (func, ...args) {
   return new Promise((resolve, reject) => {
     try {
-      resolve(fn(...args))
-    } catch (e) {
-      reject(e)
+      resolve(func(...args))
+    } catch (error) {
+      reject(error)
     }
   })
 }

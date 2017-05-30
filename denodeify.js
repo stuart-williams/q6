@@ -1,7 +1,7 @@
 const nfcall = require('./nfcall')
 
-function denodeify (fn) {
-  return (...args) => nfcall(fn, ...args)
+function denodeify (func) {
+  return (...args) => nfcall(func, ...args)
 }
 
 module.exports = denodeify

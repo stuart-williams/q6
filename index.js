@@ -5,6 +5,7 @@ const fcall = require('./fcall')
 const fapply = require('./fapply')
 const any = require('./any')
 const denodeify = require('./denodeify')
+const nbind = require('./nbind')
 const ninvoke = require('./ninvoke')
 const npost = require('./npost')
 
@@ -16,6 +17,7 @@ module.exports = {
   fapply,
   any,
   denodeify,
+  nbind,
   ninvoke,
   npost
 }

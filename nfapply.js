@@ -1,7 +1,7 @@
 const nfcall = require('./nfcall')
 
-function nfapply (fn, args) {
-  return nfcall(fn, ...args)
+function nfapply (func, args) {
+  return nfcall(func, ...args)
 }
 
 module.exports = nfapply
