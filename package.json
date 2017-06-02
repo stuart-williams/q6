@@ -1,6 +1,6 @@
 {
   "name": "q6",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Just a bunch of ES6 Promise helper functions",
   "main": "index.js",
   "scripts": {
