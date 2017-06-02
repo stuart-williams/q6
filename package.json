@@ -1,7 +1,7 @@
 {
   "name": "q6",
   "version": "0.1.0",
-  "description": "",
+  "description": "Just a bunch of ES6 Promise helper functions",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -25,5 +25,14 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.2.0"
-  }
+  },
+  "keywords": [
+    "promise",
+    "es6-promise",
+    "promises",
+    "node",
+    "async",
+    "q",
+    "q6"
+  ]
 }
