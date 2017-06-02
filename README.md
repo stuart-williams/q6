@@ -1,6 +1,6 @@
 # Cue
 
-Nothing more than a bunch of ES6 Promise helper functions...
+Nothing more than a bunch of ES6 Promise helper functions inspired by [Q]: https://github.com/kriskowal/q
 
 #### `nfcall`/`nfapply`
 
