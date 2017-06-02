@@ -1,6 +1,6 @@
 {
-  "name": "cue",
-  "version": "1.0.0",
+  "name": "q6",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stuart-williams/cue.git"
+    "url": "git+https://github.com/stuart-williams/q6.git"
   },
-  "author": "",
+  "author": "Stuart Williams",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stuart-williams/cue/issues"
+    "url": "https://github.com/stuart-williams/q6/issues"
   },
-  "homepage": "https://github.com/stuart-williams/cue#readme",
+  "homepage": "https://github.com/stuart-williams/q6#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
