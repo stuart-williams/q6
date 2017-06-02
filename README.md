@@ -1,24 +1,24 @@
-# Cue
+# Q6
 
 Nothing more than a bunch of ES6 Promise helper functions inspired by [Q](https://github.com/kriskowal/q)
 
 #### `nfcall`/`nfapply`
 
 If you're working with functions that make use of the Node.js callback pattern,
-where callbacks are in the form of `function(error, result)`, Cue provides a few
+where callbacks are in the form of `function(error, result)`, q6 provides a few
 useful utility functions for converting between them. The most straightforward
 are probably `nfcall` and `nfapply` ('Node function call/apply") for calling
 Node.js-style functions and getting back a promise:
 
 ```javascript
-const nfcall = require('cue/nfcall')
+const nfcall = require('q6/nfcall')
 const fs = require('fs')
 
 return nfcall(fs.readFile, 'foo.txt', 'utf-8')
 
 //-------------------------------------------------
 
-const nfapply = require('cue/nfapply')
+const nfapply = require('q6/nfapply')
 const fs = require('fs')
 
 return nfapply(fs.readFile, [ 'foo.txt', 'utf-8' ])
@@ -32,7 +32,7 @@ run in to the usual problems where passing a method to another function—like
 use `Function.prototype.bind` or some nice shortcut methods we provide:
 
 ```javascript
-const ninvoke = require('cue/ninvoke')
+const ninvoke = require('q6/ninvoke')
 const redis = require('redis')
 
 const redisClient = redis.createClient()
@@ -41,7 +41,7 @@ return ninvoke(redisClient, 'get', 'user:1:id')
 
 //-----------------------------------------------
 
-const npost = require('cue/npost')
+const npost = require('q6/npost')
 const redis = require('redis')
 
 const redisClient = redis.createClient()
@@ -54,7 +54,7 @@ return npost(redisClient, 'get', [ 'user:1:id' ])
 You can create reusable wrappers with `denodeify` or `nbind`:
 
 ```javascript
-const denodeify = require('cue/denodeify')
+const denodeify = require('q6/denodeify')
 const fs = require('fs')
 
 const readFile = denodeify(fs.readFile)
@@ -63,7 +63,7 @@ return readFile('foo.txt', 'utf-8')
 
 //--------------------------------------------------------
 
-const nbind = require('cue/nbind')
+const nbind = require('q6/nbind')
 const redis = require('redis')
 
 const redisClient = redis.createClient()
@@ -75,8 +75,8 @@ return redisClientGet('user:1:id')
 #### `fcall`/`fapply`
 
 ```javascript
-const fcall = require('cue/fcall')
-const fapply = require('cue/fapply')
+const fcall = require('q6/fcall')
+const fapply = require('q6/fapply')
 
 const sum = (...args) => args.reduce((a, n) => a + n)
 
@@ -97,7 +97,7 @@ rest of the batch.  If you want to wait for all of the promises to either be
 fulfilled or rejected, you can use `allSettled`:
 
 ```javascript
-const allSettled = require('cue/all-settled')
+const allSettled = require('q6/all-settled')
 
 const promises = [
   Promise.resolve('Nice one!'),
@@ -118,7 +118,7 @@ fulfilled by the first given promise to be fulfilled, or rejected if all of the
 given promises are rejected:
 
 ```javascript
-const any = require('cue/any')
+const any = require('q6/any')
 
 const promises = [
   Promise.reject(new Error('Nope...')),
